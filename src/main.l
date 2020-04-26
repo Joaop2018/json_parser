@@ -7,9 +7,19 @@ void yyerror(char *);
 
 %}
 
-
 %%
 
+\{ {return '{';}
+\} {return '}';}
+\[ {return '[';}
+\] {return ']';}
+\" {return '"';}
+\: {return ':';}
+\, {return ',';}
+[\n] {return '\n';}
+[0-9]+ {return INT;}
+[a-zA-Z]+ {return STR;}
+. ;
 
 
 %%
