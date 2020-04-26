@@ -7,9 +7,12 @@ void yyerror(char *c);
 int yylex(void);
 %}
 
-%token '{' '}' '[' ']' ':' ',' '"' STR INT
+%token '{' '}' '[' ']' ':' ',' '"' '\n' STR INT
 
 %%
+S:
+        DIC '\n' {printf('VALIDO\n');}
+
 DICI:
         '{' CONT '}' {}
         ;
@@ -37,10 +40,10 @@ B:
 D:
         D ',' D {}
         | A {}
-        
+
 %%
 
-void yyerror(char *s) {
+void yyerror(char *s) { printf('INVALIDO\n');
 }
 
 int main() {
