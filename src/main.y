@@ -11,7 +11,7 @@ int yylex(void);
 
 %%
 S:
-        DIC '\n' {printf('VALIDO\n');}
+        DICI '\n' {printf("VALIDO\n");}
 
 DICI:
         '{' CONT '}' {}
@@ -24,7 +24,7 @@ CONT:
 A:
         '"' STR '"' {}
         | INT     {}
-        | DIC {}
+        | DICI {}
         | LIST {}
         ;
 
@@ -43,7 +43,7 @@ D:
 
 %%
 
-void yyerror(char *s) { printf('INVALIDO\n');
+void yyerror(char *s) { printf("INVALIDO\n");
 }
 
 int main() {
