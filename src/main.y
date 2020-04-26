@@ -7,11 +7,12 @@ void yyerror(char *c);
 int yylex(void);
 %}
 
-%token '{' '}' '[' ']' ':' ',' '"' '\n' STR INT
+%token '{' '}' '[' ']' ':' ',' '"' EOL STR INT FLOAT
 
 %%
 S:
-        DICI '\n' {printf("VALIDO\n");}
+        DICI EOL  {printf("VALIDO\n");}
+        ;
 
 DICI:
         '{' CONT '}' {}
@@ -19,11 +20,13 @@ DICI:
 
 CONT:
         '"' STR '"' ':' A {}
+        | CONT ',' CONT {}
         ;
 
 A:
         '"' STR '"' {}
         | INT     {}
+        | FLOAT {}
         | DICI {}
         | LIST {}
         ;

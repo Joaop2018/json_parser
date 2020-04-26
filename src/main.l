@@ -16,10 +16,13 @@ void yyerror(char *);
 \" {return '"';}
 \: {return ':';}
 \, {return ',';}
-[\n] {return '\n';}
 [0-9]+ {return INT;}
-[a-zA-Z]+ {return STR;}
+[a-zA-Z0-9]+[a-zA-Z0-9\ ]* {return STR;}
+[0-9]+[.][0-9]+ {return FLOAT;}
+[\n]* {return EOL;}
 . ;
+
+
 
 
 %%
