@@ -19,8 +19,9 @@ void yyerror(char *);
 [0-9]+ {return INT;}
 [a-zA-Z0-9]+[a-zA-Z0-9\ ]* {return STR;}
 [0-9]+[.][0-9]+ {return FLOAT;}
-[\n]* {return EOL;}
+[\n]*
 . ;
+
 
 
 

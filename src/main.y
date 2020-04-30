@@ -2,20 +2,20 @@
 
 %{
 #include <stdio.h>
-  #include <stdlib.h>
+#include <stdlib.h>
 void yyerror(char *c);
 int yylex(void);
 %}
 
-%token '{' '}' '[' ']' ':' ',' '"' EOL STR INT FLOAT
+%token '{' '}' '[' ']' ':' ',' '"' STR INT FLOAT
 
 %%
 S:
-        DICI EOL  {printf("VALIDO\n");}
+        JSON   {printf("VALIDO\n");}
         ;
 
-DICI:
-        '{' CONT '}' {}
+JSON:
+        '{' CONT '}'  {}
         ;
 
 CONT:
@@ -27,7 +27,7 @@ A:
         '"' STR '"' {}
         | INT     {}
         | FLOAT {}
-        | DICI {}
+        | JSON {}
         | LIST {}
         ;
 
